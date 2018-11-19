@@ -1,25 +1,59 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
 
+import WaveSurfer from 'wavesurfer.js';
+
+import jabberSong from './media/Jabberwocky - Photomaton Jean Tonique Remix.mp3';
+import tRexSong from './media/t-rex-roar.mp3';
+
 class App extends Component {
+  componentDidMount() {
+       // const wavesurfer = WaveSurfer.create({
+    //   container: '#waveform',
+    //   waveColor: 'violet',
+    //   progressColor: 'purple'
+    // });
+
+    // wavesurfer.on('ready', function () {
+    //   wavesurfer.play();
+    // });
+    // wavesurfer.load(jabberSong);
+    // this.loadJabberyWockyVisual();
+    this.loadTRexVisual();
+  }
+
+  loadJabberyWockyVisual = () => {
+    const wavesurfer = WaveSurfer.create({
+      container: '#waveform',
+      waveColor: 'violet',
+      progressColor: 'red'
+    });
+
+    wavesurfer.on('ready', function () {
+      wavesurfer.play();
+    });
+
+    wavesurfer.load(jabberSong);
+  }
+
+  loadTRexVisual = () => {
+    const wavesurfer = WaveSurfer.create({
+      container: '#waveform',
+      waveColor: 'violet',
+      progressColor: 'green'
+    });
+
+    wavesurfer.on('ready', function () {
+      wavesurfer.play();
+    });
+
+    wavesurfer.load(tRexSong);
+  }
+
   render() {
     return (
       <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
+        <div id="waveform"></div>
       </div>
     );
   }
