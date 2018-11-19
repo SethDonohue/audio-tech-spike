@@ -35,7 +35,7 @@ class WaveVisual extends Component {
       })
       wavesurfer.load(props.songURL);
       wavesurfer.on('ready', function () {
-        wavesurfer.play();
+        // wavesurfer.play();
       });
       return wavesurfer;
     };
@@ -51,6 +51,9 @@ class WaveVisual extends Component {
     if(prevProps.volume !== this.props.volume){
       this._wavesurfer.setVolume(this.props.volume)
     }
+    if(prevProps.playing !== this.props.playing){
+      this._wavesurfer.play();
+    }
   }
 
   render() {
@@ -65,6 +68,7 @@ class WaveVisual extends Component {
 
 const mapStateToProps = state => ({
   volume: state.volume.masterVolume,
+  playing: state.controls.playing,
 });
 
 
